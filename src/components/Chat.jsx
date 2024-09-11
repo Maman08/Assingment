@@ -27,7 +27,9 @@ const Chat = () => {
 
   return (
     <div className="container-fluid p-3 my-3 mx-3" style={{ height: '100%' }}>
-      {chat.map((message, index) => (
+      <div className="row justify-content-end">
+        <div className="col-md-10">
+        {chat.map((message, index) => (
         <React.Fragment key={index}>
           <div
             className={`d-flex ${message.from === user ? 'justify-content-end usermsg' : 'justify-content-start soundversemsg'} mb-3 align-items-start`}
@@ -148,6 +150,8 @@ const Chat = () => {
   </button>
 </div>
 
+        </div>
+      </div>
 
     </div>
   );
