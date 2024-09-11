@@ -329,7 +329,7 @@ const handleAudioUpload = (event) => {
   
       <div className="row mt-3 text-white pb-5">
        <div className="col-md-12 d-flex">
-       <span className='px-3 py-3' >{formatTime(totalDuration)}</span>
+       <span className='px-3 py-3'>{formatTime(currentTime)}</span> 
        <div className="progress-and-controls " style={{width:'100%'}}>
      
      <input
@@ -349,8 +349,8 @@ const handleAudioUpload = (event) => {
        )}
      </button>
    </div>
-   <span className='px-3 py-3'>{formatTime(currentTime)}</span> 
-
+   
+   <span className='px-3 py-3' >{formatTime(totalDuration)}</span>
 
        </div>           
 </div>
