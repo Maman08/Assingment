@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Multitrack from 'wavesurfer-multitrack';
-import './VideoEditor.css'; // Import custom styles
+import './VideoEditor.css'; 
 
 const VideoEditor = () => {
   const colors = [
-    { waveColor: '#746a58', bgColor: '#1a1a1a' }, // Color 1
-    { waveColor: '#614468', bgColor: '#160435' }, // Color 2
-    { waveColor: '#8c4f3e', bgColor: '#340303' }, // Color 3
+    { waveColor: '#746a58', bgColor: '#1a1a1a' }, 
+    { waveColor: '#614468', bgColor: '#160435' }, 
+    { waveColor: '#8c4f3e', bgColor: '#340303' }, 
   ];
 
   const [videoSrc, setVideoSrc] = useState(null);
@@ -39,13 +39,12 @@ const handleAudioUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
       const audioUrl = URL.createObjectURL(file);
-      const videoDuration = videoRef.current.duration; // Get video duration
+      const videoDuration = videoRef.current.duration; 
 
       const audioElement = new Audio(audioUrl);
       audioElement.onloadedmetadata = () => {
         const audioDuration = audioElement.duration;
 
-        // Limit the audio track duration to the length of the video
         const trackDuration = Math.min(audioDuration, videoDuration);
 
         setAudios((prevAudios) => [
@@ -95,7 +94,7 @@ const handleAudioUpload = (event) => {
             url: audio.url,
             draggable: true,
             startPosition: 0,
-            endPosition: audio.duration, // Ensure track ends at the right time
+            endPosition: audio.duration, 
             volume: 0.8,
             options: {
               waveColor: waveColor,
@@ -232,7 +231,7 @@ const handleAudioUpload = (event) => {
       };
 
       recorder.start();
-      setTimeout(() => recorder.stop(), 5000);
+      setTimeout(() => recorder.stop(), 1000);
     }
   };
   const handleSeek = (event) => {
@@ -244,7 +243,6 @@ const handleAudioUpload = (event) => {
   };
   return (
     <div className="container-fluid">
-      {/* Video Section */}
       <div className="row mt-3"  >
       <div className="col-md-2 ">
       
@@ -254,20 +252,19 @@ const handleAudioUpload = (event) => {
             <video width="100%" controls ref={videoRef} src={videoSrc} />
           ) : (
             <div
-              className={`drag-drop-zone ${isDragging ? 'dragging' : ''}`}
+              className={`text-white drag-drop-zone ${isDragging ? 'dragging' : ''}`}
               onDragOver={handleDragOver}
               onDrop={handleDrop}
               onDragLeave={handleDragLeave}
             >
               <p>Drag and drop a video file here, or click to browse</p>
-              <button
+              <button className="file"
                 onClick={() => document.getElementById('video-upload-input').click()}
               >
-                Browse Files
+                <i class="bi bi-file-earmark-play-fill"></i>
               </button>
             </div>
           )}
-          {/* Hidden video upload input */}
           <input
             type="file"
             accept="video/*"
@@ -293,31 +290,33 @@ const handleAudioUpload = (event) => {
 
 
 
-      {/* Controls and Waveforms */}
       <div className="row">
-        {/* Controls Column */}
         <div className="col-md-2">
           <div className="d-flex flex-column">
             <div className="d-flex">
               <button onClick={toggleMute} className="sound">
                 {isMuted ? (
-                    <i className="bi bi-volume-up"></i>
+                    <i className="bi bi-volume-mute-fill"></i>
                 ) : (
-                  <i className="bi bi-volume-mute-fill"></i>
+                  
+                  <i className="bi bi-volume-up"></i>
                 )}
               </button>
             </div>
           </div>
         </div>
   
-        {/* Waveforms Column */}
-        <div className="col-md-8">
+        <div className="col-md-8 my-2">
           <div id="multitrack-container"></div>
-          {/* Add Audio Button */}
+          <div className='justify-content-between'>
           <button onClick={addAudioTrack} className="control-btn mt-2">
             Add Audio
           </button>
-          {/* Hidden audio upload input */}
+          <button onClick={exportVideo} className="control-btn mt-2">
+            Export
+          </button>
+
+          </div>
           <input
             type="file"
             accept="audio/*"
@@ -328,34 +327,32 @@ const handleAudioUpload = (event) => {
         </div>
       </div>
   
-      <div className="row mt-3 text-white">
-  <div className="col-md-2 mt-3 justify-content-center"></div>
-  <div className="col-md-8 justify-content-center">
-    <div className="progress-and-controls">
-    <span>{formatTime(currentTime)}</span>  
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={videoProgress}
-        onChange={handleSeek}
-        className="progress-bar"
-        style={{ width: '100%' }}
-      />
-      <span>{formatTime(totalDuration)}</span>
-      <button onClick={playPauseAll} className="play-pause-btn">
-        {isPlaying ? (
-          <i className="bi bi-pause"></i>
-        ) : (
-          <i className="bi bi-caret-right-fill"></i>
-        )}
-      </button>
-      <div className="time-display">
-        
-        
-      </div>
-    </div>
-  </div>
+      <div className="row mt-3 text-white pb-5">
+       <div className="col-md-12 d-flex">
+       <span className='px-3 py-3' >{formatTime(totalDuration)}</span>
+       <div className="progress-and-controls " style={{width:'100%'}}>
+     
+     <input
+       type="range"
+       min="0"
+       max="100"
+       value={videoProgress}
+       onChange={handleSeek}
+       className="progress-bar"
+       style={{ width: '100%' }}
+     />
+     <button onClick={playPauseAll} className="play-pause-btn">
+       {isPlaying ? (
+         <i className="bi bi-pause"></i>
+       ) : (
+         <i className="bi bi-caret-right-fill"></i>
+       )}
+     </button>
+   </div>
+   <span className='px-3 py-3'>{formatTime(currentTime)}</span> 
+
+
+       </div>           
 </div>
 
         </>

@@ -32,7 +32,6 @@ font-style: oblique;
     color: rgb(224, 222, 222);
 }
 
-/* Navbar.css */
 
 .custom-toggler {
     border: none; 
@@ -44,7 +43,7 @@ font-style: oblique;
   }
   
   .d-flex.align-items-start {
-    align-items: flex-start; /* Align items to the start (top) of the container */
+    align-items: flex-start; 
   }
 
   

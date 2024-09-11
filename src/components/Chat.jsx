@@ -4,7 +4,7 @@ import user from "../Assets/Ellipse 2.png";
 import { Spinner } from 'react-bootstrap';
 
 const Chat = () => {
-  const [playingIndex, setPlayingIndex] = useState(null); // Track which message is currently playing
+  const [playingIndex, setPlayingIndex] = useState(null);
 
   const chat = [
     { from: user, msg: "Distorted electric guitar with trap drums. Music has a feeling of anger and mystery.", status: 'pause' },
@@ -16,12 +16,10 @@ const Chat = () => {
   ];
 
   const handlePlayClick = (index) => {
-    // Set the current message as playing, and reset others
     setPlayingIndex(index);
   };
 
   const handlePauseClick = () => {
-    // Set all messages to pause
     setPlayingIndex(null);
   };
 
@@ -85,7 +83,7 @@ const Chat = () => {
                 className='play p-2 px-3'
                 onClick={() => handlePlayClick(index)}
                 style={{
-                  border: playingIndex === index ? '0.1px solid #7e57de' : 'none', // Border if playing
+                  border: playingIndex === index ? '0.1px solid #7e57de' : 'none', 
                   cursor: 'pointer'
                 }}
               >
@@ -96,7 +94,7 @@ const Chat = () => {
                 className='pause p-2 px-3'
                 onClick={handlePauseClick}
                 style={{
-                  border: playingIndex !== index && playingIndex !== null ? '0.1px solid #7e57de' : 'none', // Border if paused and another is playing
+                  border: playingIndex !== index && playingIndex !== null ? '0.1px solid #7e57de' : 'none', 
                   cursor: 'pointer'
                 }}
               >
@@ -128,7 +126,6 @@ const Chat = () => {
     style={{ backgroundColor: '#181a1c', color: '#fff', border: 'none', borderRadius: '15px', paddingRight: '50px' }} 
   />
   
-  {/* Three dots icon */}
   <i className="bi bi-three-dots threedot" style={{
     position: 'absolute',
     right: '50px',
@@ -138,7 +135,6 @@ const Chat = () => {
   
   }}></i>
   
-  {/* Send button */}
   <button className="btn btn-primary senndbtn" style={{
     border: 'none',
     position: 'absolute',
