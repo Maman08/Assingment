@@ -1,14 +1,63 @@
-.video-editor { font-family: Arial, sans-serif; padding: 20px; text-align: center; max-width: 100%; box-sizing: border-box; color: #ccc; } .header { font-size: 1.5rem; margin-bottom: 20px; } .drag-drop-zone { border: 2px dashed #ccc; padding: 20px; margin: 20px auto; max-width: 90%; border-radius: 8px; cursor: pointer; transition: border-color 0.3s, background-color 0.3s; } .drag-drop-zone.video-added { border: none; } .drag-drop-zone.dragging { border-color: #007bff; background-color: #f0f8ff; } .video-preview { width: 100%; max-width: 100%; border-radius: 8px; margin: 0 auto; } .controls { margin-top: 20px; } .control-btn, .audio-btn { background-color: #007bff; color: #fff; border: none; padding: 10px 15px; margin: 5px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; } .control-btn:hover, .audio-btn:hover { background-color: #0056b3; } .audio-controls { margin-top: 10px; } #multitrack-container{ height: 0.5rem !important; } .playback-controls{ height: 0.1rem; } /* VideoEditor.css */ #multitrack-container { height: 150px; /* Adjust this value to change the overall height of the waveform */ } .waveform-track { height: 0.1rem !important; /* Make each track take up the full height of the container */ }
-/* In your VideoEditor.css */
-.waveform-container .waveform-track {
-    transition: background-color 0.3s ease;
-}
+.video-editor { font-family: Arial, sans-serif; padding: 20px; text-align: center; max-width: 100%; box-sizing: border-box; color: #ccc; } 
+.header { font-size: 1.5rem; margin-bottom: 20px; } 
+.drag-drop-zone { border: 2px dashed #ccc; padding: 20px; margin: 20px auto; max-width: 90%; border-radius: 8px; cursor: pointer; transition: border-color 0.3s, background-color 0.3s; }
+ .drag-drop-zone.video-added { border: none; } 
+ .drag-drop-zone.dragging { border-color: #007bff; background-color: #f0f8ff; } 
+ .video-preview { width: 100%; max-width: 100%; border-radius: 8px; margin: 0 auto; } 
+ .controls { margin-top: 20px; } .control-btn, 
+ .addaudio { background-color: rgb(124,51,239);; color: #fff; border: none; padding: 10px 15px; margin: 5px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; } 
+ .addaudio:hover { background-color: rgb(93, 24, 205); } 
+ 
 
-.waveform-container .waveform-track:hover {
-    background-color: rgba(255, 255, 255, 0.863); /* Highlight on hover */
-    cursor: pointer;
-}
 
-.waveform-container .waveform-track.active {
-    background-color: rgba(255, 0, 0, 0.2); /* Highlight on active drag */
-}
+
+
+
+ /* Set the height of the multitrack container */
+
+  
+  /* Set the height of each waveform track */
+  .waveform-track {
+    height: 50px; /* Adjust this value as needed */
+    overflow: hidden;
+  }
+  
+  /* Ensure the canvas fills the track height */
+  .waveform-track canvas {
+    height: 100% !important;
+  }
+  
+  /* Style for the control buttons */
+  .control-btn {
+    margin: 5px;
+  }
+  
+  /* Style for the drag-drop zone */
+  .drag-drop-zone {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .drag-drop-zone.dragging {
+    border-color: #000;
+  }
+  
+
+  .backword{
+    font-size: 1.5rem;
+    color: gray;
+    font-weight: 6000;
+  }
+  .forword{
+    font-size: 1.5rem;
+    color: gray;
+    font-weight: 6000;
+  }
+  .sound{
+    font-size: 1.5rem;
+    color: gray;
+    font-weight: 6000;
+    background-color:#080808 ;
+    border: none;
+  }
